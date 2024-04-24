@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Resolver el siguiente ejercicio:
+// En el componente App.js poseo el siguiente arreglo de ingresos brutos por compañia:
+// const netIncomes = [{brand: ´McDonalds´, income: 1291283}, {brand: Burger King, income: 1927361}, {brand: ‘KFC’, income: 1098463}];
+// En el componente App:
+// Escribir un componente Table.js que arme una tabla de HTML donde las columnas sean el nombre de la marca y el ingreso neto.
+// Escribir una etiqueta p que muestre el promedio de ingreso neto entre todas las marcas. Utilizar obligatoriamente 
+// la función reduce para calcular el promedio.
+// La entrega debe ser del repositorio de github en donde se encuentran todas las prácticas individuales de la cátedra.
+
+import DataTable from 'react-data-table-component';
+import Table from './components/table/Table';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const netIncomes = [
+    {brand: "McDonalds", income: 1291283}, 
+    {brand: "Burger King", income: 1927361}, 
+    {brand: "KFC", income: 1098463},
+    {brand: "Mostaza", income: 1478973}
+  ];
+  const columns = [
+    {
+      name: "Empresa",
+      selector: row => row.brand,
+      sortable: true,
+    },
+    {
+      name: "Ingreso",
+      selector: row => row.income,
+      sortable: true,
+    },
+  ]
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    
+      <div className="container">        
+        <DataTable
+          title = "Tabla de ingresos"
+          columns= {columns}
+          data = {netIncomes}
+          highlightOnHover
+        />
+        <Table netIncomes={netIncomes}/>{Table}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    
+  );
 }
 
 export default App
