@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import TodoWrapper from './components/todoWrapprer/TodoWrapper';
+
+// Debemos crear una aplicación de manejo de tareas personales.
+// La app nos debe permitir:
+// Agregar una nueva tarea a la lista. 
+// Marcar una tarea como completada e indicarlo de alguna manera (tachando el texto o cambiando el color del mismo (gris claro, por ejemplo)).
+// Borrar una tarea de la lista.
+// Sugerencias:
+// Crear el estado de las tareas en App.js para que se facilite el pasaje entre componentes. 
+// Crear un componente tipo lista que nos muestre todas las tareas de una lista. 
+// Crear un componente que nos permite agregar una nueva tarea.
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <TodoWrapper/>
+    </div>
+  );
 }
 
-export default App
+export default App;
